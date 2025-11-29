@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Время - Детям</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'kid-blue': '#4CC9F0',
+              'kid-purple': '#7209B7',
+              'kid-pink': '#F72585',
+              'kid-yellow': '#FFD60A',
+              'kid-green': '#06D6A0',
+            },
+            fontFamily: {
+              sans: ['Comic Sans MS', 'Comic Sans', 'cursive', 'sans-serif'],
+            },
+            animation: {
+              'bounce-slow': 'bounce 3s infinite',
+              'wiggle': 'wiggle 1s ease-in-out infinite',
+            },
+            keyframes: {
+              wiggle: {
+                '0%, 100%': { transform: 'rotate(-3deg)' },
+                '50%': { transform: 'rotate(3deg)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-sky-50 text-slate-800">
+    <div id="root"></div>
+  </body>
+</html>
