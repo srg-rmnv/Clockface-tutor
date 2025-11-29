@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import AnalogClock from './components/AnalogClock';
 import OptionButton from './components/OptionButton';
@@ -145,7 +144,8 @@ const App: React.FC = () => {
     setFeedbackMessage(msg);
 
     if (isCorrect) {
-      setTimeout(startNewRound, 2500);
+      // Reduced delay to 1.5s for faster flow
+      setTimeout(startNewRound, 1500);
     }
   };
 

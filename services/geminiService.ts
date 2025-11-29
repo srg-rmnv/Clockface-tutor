@@ -51,15 +51,19 @@ export const generateTimeScenario = async (hours: number, minutes: number): Prom
 export const getEncouragement = async (isCorrect: boolean): Promise<string> => {
   try {
     const prompt = isCorrect 
-      ? "Напиши короткую похвалу для ребенка (одно предложение) за правильный ответ на русском." 
-      : "Напиши мягкую ободряющую фразу для ребенка (одно предложение), что стоит попробовать еще раз, на русском.";
+      ? "Напиши ТОЛЬКО ОДНУ короткую фразу (2-3 слова) похвалы для ребенка на русском. Без списков, без вариантов, без кавычек. Пример: 'Отлично получилось!'" 
+      : "Напиши ТОЛЬКО ОДНУ короткую мягкую фразу (3-4 слова) утешения для ребенка на русском. Без списков. Пример: 'Попробуй еще разок.'";
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
     });
 
-    return response.text || (isCorrect ? "Молодец!" : "Попробуй еще раз!");
+    let text = response.text || "";
+    // Clean up if the model still adds quotes or newlines
+    text = text.replace(/["\n]/g, '').trim();
+    
+    return text || (isCorrect ? "Молодец!" : "Попробуй еще раз!");
   } catch (e) {
     return isCorrect ? "Супер!" : "Не сдавайся!";
   }
